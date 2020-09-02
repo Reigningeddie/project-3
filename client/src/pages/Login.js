@@ -39,6 +39,7 @@ function Login() {
         <InputGroup
           id="email"
           labelText="Email"
+          placeholder="yourname@email.com"
           name="email"
           type="email"
           value={email}
@@ -47,6 +48,7 @@ function Login() {
         <InputGroup
           id="password"
           labelText="Password"
+          placeholder="p@ssw0Rd!"
           name="password"
           type="password"
           value={password}
