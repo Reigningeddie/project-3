@@ -16,20 +16,28 @@ export default class Draw extends Component {
 
   render() {
     return (
-      <div>
+      <div className="artboard">
+          <div className="header">
+        <h1>This is Where You Draw!</h1>
+      </div>
+        <div className="picker">
         <BlockPicker
           color={this.state.colorSelected}
           onChangeComplete={this.handleChangeComplete}
+          padding={50}
         />
+        </div>
+        <div className="canvas">
         <CanvasDraw
           brushColor={this.state.colorSelected}
           canvasWidth={1000}
           onChange={() => console.log("onChange")}
           lazyRadius= {0}
           brushRadius= {7}
+          //hideGrid={"false"}
         />
-
-      </div>
+        </div>
+        </div>
     );
   }
 };

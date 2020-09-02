@@ -1,6 +1,8 @@
 .LoginForm {
   display: flex;
   flex-direction: column;
+  font-family: 'Luckiest Guy', cursive;
+  font-size: large;
 }
 
 .LoginForm input {
@@ -10,6 +12,8 @@
   margin-bottom: 1.25rem;
   padding: 0.75rem 0.5rem;
   font-size: 1rem;
+  font-family: 'Comfortaa', cursive;
+
 }
 
 .LoginForm ::placeholder,
@@ -20,4 +24,6 @@
 .LoginForm label {
   margin-bottom: 0.5rem;
   font-weight: bold;
+  font-family: 'Luckiest Guy', cursive;
+  font-size: x-large;
 }
