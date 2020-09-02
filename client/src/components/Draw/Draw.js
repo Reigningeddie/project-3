@@ -1,12 +1,35 @@
-import React from "react";
+import React, { Component } from "react";
 import "./Draw.css";
+import CanvasDraw from "react-canvas-draw";
+import { BlockPicker } from 'react-color';
 
-function Draw() {
+
+export default class Draw extends Component {
+  state = {
+    colorSelected: "#000000"
+  };
+
+
+  handleChangeComplete = (color) => {
+    this.setState({ colorSelected: color.hex });
+  };
+
+  render() {
     return (
-        <div>
-            Hello this is works
-        </div>
-    )
-}
+      <div>
+        <BlockPicker
+          color={this.state.colorSelected}
+          onChangeComplete={this.handleChangeComplete}
+        />
+        <CanvasDraw
+          brushColor={this.state.colorSelected}
+          canvasWidth={1000}
+          onChange={() => console.log("onChange")}
+          lazyRadius= {0}
+          brushRadius= {7}
+        />
 
-export default Draw;
+      </div>
+    );
+  }
+};
