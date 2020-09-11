@@ -10,6 +10,7 @@ import Signup from "./pages/Signup";
 import Home from "./pages/Home";
 import Navbar from "./components/Navbar";
 import Draw from "./components/Draw";
+import Chat from "./components/Chat";
 
 function App() {
   return (
@@ -32,6 +33,9 @@ function App() {
             </ProtectedRoute>
             <Route exact path="/draw">
               <Draw />
+            </Route>
+            <Route exact path="/chat">
+              <Chat />
             </Route>
           </Switch>
         </div>
