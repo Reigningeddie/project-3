@@ -3,14 +3,14 @@
     --black: #272727;
   }
   
-  html {
+  /* html {
     font-family: "Segoe UI", Roboto, Helvetica, Arial, sans-serif,
       "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
     font-weight: 900;
     font-size: 16px;
     color: var(--black);
     text-shadow: 0 2px 0 rgba(0, 0, 0, 0.07);
-  }
+  } */
   
   body {
 
@@ -38,18 +38,26 @@
   input[type=number] {
     width: 50px;
   }
-  .artboard {
-    display:flex;
+  .dashboard {
+    align-content: center;
     padding:10px
+  }
+  .artboard {
+    display: flex;
   }
   .picker {
     margin: 10px;
     font-family: 'Fredoka One', cursive; 
   }
   .canvas {
-  background-color: #272727;
+  background-color: black;
+  width: 565px;
   padding: 7px;
   }
   .header {
+    font-family: 'Comfortaa', cursive;
+  }
+  button {
+    margin: 10px;
     font-family: 'Comfortaa', cursive;
   }
