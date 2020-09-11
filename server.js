@@ -14,24 +14,24 @@ const PORT = process.env.PORT || 3001;
 
 // log all requests to the console in development
 if (process.env.NODE_ENV !== "production") {
-  server.use(morgan("dev"));
+  app.use(morgan("dev"));
 }
 
 // Setting up express to use json and set it to req.body
-server.use(express.json());
-server.use(express.urlencoded({ extended: true }));
+app.use(express.json());
+app.use(express.urlencoded({ extended: true }));
 
 initDb();
 
 // Serve up static assets in production (usually on heroku)
 if (process.env.NODE_ENV === "production") {
-  server.use(express.static("client/build"));
+  app.use(express.static("client/build"));
 }
 
-server.use(authRouter, usersRouter, errorMiddleware);
+app.use(authRouter, usersRouter, errorMiddleware);
 
 // Send all other requests to react app
-server.get("*", (req, res) => {
+app.get("*", (req, res) => {
   res.sendFile(path.join(__dirname, "./client/build/index.html"));
 });
 
