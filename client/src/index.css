@@ -6,13 +6,13 @@ body {
 }
 
 * {
-  color: #006181;
+  color: #3F3D3D;
 }
 
 button {
   border: none;
   cursor: pointer;
-  background-color: #33ccff;
+  background-color: #ff982b;
   color: white;
   font-size: 1.125rem;
   padding: 0.75rem 1.5rem;
@@ -21,5 +21,5 @@ button {
 button:hover,
 button:active,
 button:focus {
-  background-color: #01bdfb;
+  background-color: #FFAC06;
 }
