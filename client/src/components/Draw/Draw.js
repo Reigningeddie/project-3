@@ -33,6 +33,7 @@ export default class Draw extends Component {
         </div>
         <div className="canvas">
         <CanvasDraw
+        ref={canvasDraw => (this.saveableCanvas = canvasDraw)}
           brushColor={this.state.colorSelected}
           canvasWidth={550}
           canvasHeight={550}
@@ -41,11 +42,16 @@ export default class Draw extends Component {
           brushRadius= {7}
           //hideGrid={"false"}
         />
-        <button class="btn btn-primary">Clear</button>
-        <button class="btn btn-success">Submit</button>
+        <button class="btn btn-primary" onClick={() => {
+              this.saveableCanvas.clear();
+            }}>Clear</button>
+        <button class="btn btn-success" onClick={() => {
+              this.saveableCanvas.undo();
+            }}>Undo</button>
         </div>
         </div>
         </div>
     );
   }
 };
+
