@@ -24,6 +24,9 @@
 .LoginForm label {
   margin-bottom: 0.5rem;
   font-weight: bold;
-  font-family: 'Luckiest Guy', cursive;
+  font-family: 'Comfortaa', cursive;
   font-size: x-large;
+}
+h1 {
+  font-family: 'Luckiest Guy', cursive;
 }
