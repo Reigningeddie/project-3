@@ -10,7 +10,8 @@ import Signup from "./pages/Signup";
 import Home from "./pages/Home";
 import Navbar from "./components/Navbar";
 import Draw from "./components/Draw";
-import Chat from "./components/Chat";
+import Chat from './components/Chat/Chat';
+import Join from './components/Join/Join';
 
 function App() {
   return (
@@ -34,9 +35,8 @@ function App() {
             <Route exact path="/draw">
               <Draw />
             </Route>
-            <Route exact path="/chat">
-              <Chat />
-            </Route>
+            <Route path = "/chat" component={Chat}/>
+            <Route path = "/join" component={Join}/>
           </Switch>
         </div>
       </Router>
