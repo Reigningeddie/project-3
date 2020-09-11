@@ -1,69 +1,70 @@
-import React, {useState, useEffect} from 'react';
-import queryString from 'query-string';
-import io from 'socket.io-client';
-import './Chat.css'
-import InfoBar from '../InfoBar/infoBar';
-import Input from '../Input/Input';
-import Messages from '../Messages/Messages';
+import React, { useState, useEffect } from 'react'
+import io from 'socket.io-client'
+import TextField from '@material-ui/core/TextField'
 
-let socket;
+const socket = io.connect('http://localhost:3001')
 
+function Chat() {
+  const [state, setStaet] = useState({ message: '', name: '' })
+  const [chat, setChat] = useState([])
 
+  useEffect(() => {
+    socket.on('message', ({ name, message }) => {
+      setChat([...chat, { name, message }])
+    })
+  })
 
-const Chat = ({location}) =>{
-    const [name, setName] = useState('');
-    const [room, setRoom] = useState('');
-    const [message, setMessage] = useState('');
-    const [messages, setMessages] = useState([]);
-    const ENDPOINT = 'localhost:3000';
+  const onTextChange = e => {
+    setStaet({ ...state, [e.target.name]: e.target.value })
+  }
 
-    useEffect(()=>{
-        const {name, room} = queryString.parse(location.search);
+  const onMessageSubmit = e => {
+    e.preventDefault()
+    const { name, message } = state
+    socket.emit('message', { name, message })
+    setStaet({ message: '', name })
+  }
 
-        socket = io(ENDPOINT);
+  const renderChat = () => {
+    return chat.map(({ name, message }, index) => (
+      <div key={index}>
+        <h3>
+          {name}: <span>{message}</span>
+        </h3>
+      </div>
+    ))
+  }
 
-        setName(name);
-        setRoom(room);
-
-        socket.emit('join',{name, room}, ()=>{
-            
-        });
-
-        return() =>{
-            socket.emit('disconnect');
-
-            socket.off();
-        }
-
-    },[ENDPOINT, location.search]);
-
-    useEffect(() => {
-        socket.on('message', (message)=>{
-            setMessages([...messages, message]);
-        })
-    }, [messages])
-
-    //function for sending messages
-    const sendMessage = (event) =>{
-        event.preventDefault();
-
-        if(message){
-            socket.emit('sendMessage', message, ()=> setMessage(''));
-        }
-    }
-
-    console.log(message, messages);
-
-
-    return(
-        <div className="outerContainer">
-            <div className="container">
-                <InfoBar room={room}></InfoBar>
-                <Messages messages={messages}/>
-                <Input message={message} setMessage={setMessage} sendMessage={sendMessage}/>
-            </div>
+  return (
+    <div className="card">
+      <form onSubmit={onMessageSubmit}>
+        <h1>Messanger</h1>
+        <div className="name-field">
+          <TextField
+            name="name"
+            onChange={e => onTextChange(e)}
+            value={state.name}
+            label="Name"
+          />
         </div>
-    )
+        <div>
+          <TextField
+            name="message"
+            onChange={e => onTextChange(e)}
+            value={state.message}
+            id="outlined-multiline-static"
+            variant="outlined"
+            label="Message"
+          />
+        </div>
+        <button>Send Message</button>
+      </form>
+      <div className="render-chat">
+        <h1>Chat Log</h1>
+        {renderChat()}
+      </div>
+    </div>
+  )
 }
 
 export default Chat;

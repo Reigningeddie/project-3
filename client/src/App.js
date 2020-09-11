@@ -10,6 +10,7 @@ import Signup from "./pages/Signup";
 import Home from "./pages/Home";
 import Navbar from "./components/Navbar";
 import Draw from "./components/Draw";
+
 import Chat from './components/Chat/Chat';
 import Join from './components/Join/Join';
 
@@ -37,6 +38,7 @@ function App() {
             </Route>
             <Route path = "/chat" component={Chat}/>
             <Route path = "/join" component={Join}/>
+
           </Switch>
         </div>
       </Router>

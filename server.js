@@ -9,8 +9,15 @@ const usersRouter = require("./routes/users");
 const errorMiddleware = require("./routes/errorMiddleware");
 const http = require("http");
 const server = http.createServer(app);
+const io = require("socket.io")(server);
 
 const PORT = process.env.PORT || 3001;
+
+io.on("connection", (socket) => {
+  socket.on("message", ({ name, message }) => {
+    io.emit("message", { name, message });
+  });
+});
 
 // log all requests to the console in development
 if (process.env.NODE_ENV !== "production") {
