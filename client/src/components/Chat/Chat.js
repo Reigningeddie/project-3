@@ -38,7 +38,7 @@ function Chat() {
   return (
     <div className="card">
       <form onSubmit={onMessageSubmit}>
-        <h1>Messanger</h1>
+        <h1>Messenger</h1>
         <div className="name-field">
           <TextField
             name="name"
