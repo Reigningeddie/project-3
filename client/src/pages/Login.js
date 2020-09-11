@@ -63,7 +63,7 @@ function Login() {
         }}
         to="/signup"
       >
-        Go to Signup
+       
       </Link>
     </div>
   );

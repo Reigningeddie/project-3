@@ -28,7 +28,7 @@ export default class Draw extends Component {
           color={this.state.colorSelected}
           onChangeComplete={this.handleChangeComplete}
           padding={50}
-          colors= {['#fc0303', '#fc8403', '#fce703', '#02d12b', '#02cad1', '#0258d1', '#9302d1', '#d102ae65', '#000000', '#753a02']}
+          colors= {['#fc0303', '#fc8403', '#fce703', '#02d12b', '#02cad1', '#0258d1', '#9302d1', '#FA6BED', '#000000', '#753a02']}
         />
         </div>
         <div className="canvas">
