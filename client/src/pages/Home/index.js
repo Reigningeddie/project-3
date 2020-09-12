@@ -9,6 +9,7 @@ function Home() {
   const history = useHistory();
 
   const goToEditProfile = () => history.push("/profile");
+  const goToJoinGame = () => history.push("/Join");
 
   return (
     <div className="Home">
@@ -21,6 +22,7 @@ function Home() {
         <button style={{ marginLeft: "1em" }} onClick={() => logout()}>
           Logout
         </button>
+        <button onClick={goToJoinGame}>Join a Game</button>
       </p>
     </div>
   );
