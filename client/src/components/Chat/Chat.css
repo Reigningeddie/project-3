@@ -1,13 +1,17 @@
 .column{
-  width: 500px;
-  height: 730px;
+  /*width: 400px;
+  height: 730px;*/
   margin: 0 auto;
-  margin-top: 50px;
-  padding: 25px;
+  /*margin-top: 40px;
+  padding: 25px;*/
 
 }
 #chatWindow {
   background-color: #ff982b;
+  margin-top: 40px;
+  padding: 0 25px 25px 25px;
+  width: 400px;
+  height: 730px;
 }
 #chatButton {
   background-color: black;
@@ -32,8 +36,8 @@ input[type=text] {
 #chatHeader {
   color: white;
   text-align: center;
-  margin-bottom: 0;
-  padding-top: 7px;
+  margin-bottom: 10px;
+  padding: 7px 0 0 0;
   font-size: 40px
 
 }

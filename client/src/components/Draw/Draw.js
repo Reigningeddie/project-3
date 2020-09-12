@@ -20,7 +20,6 @@ export default class Draw extends Component {
       <div className="dashboard">
           <div className="header">
         <h1>You Get To Draw: <Word/></h1>
-        <h5>Score: ____</h5>
       </div>
       <br></br>
       <div className="artboard">
@@ -51,7 +50,7 @@ export default class Draw extends Component {
             }}>Undo</button>
         </div>
         </div>
-        </div>
+       </div>
     );
   }
 };
