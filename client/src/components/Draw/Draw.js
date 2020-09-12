@@ -18,8 +18,8 @@ export default class Draw extends Component {
     return (
       <div className="dashboard">
           <div className="header">
-        <h1>You Get To Draw: _________________</h1>
-        <h5>Score: ____</h5>
+        <h1>You Get To Draw: </h1>
+        <h5>Score:</h5>
       </div>
       <br></br>
       <div className="artboard">
@@ -35,19 +35,14 @@ export default class Draw extends Component {
         <CanvasDraw
         ref={canvasDraw => (this.saveableCanvas = canvasDraw)}
           brushColor={this.state.colorSelected}
-          canvasWidth={550}
-          canvasHeight={550}
+          canvasWidth={450}
+          canvasHeight={450}
           onChange={() => console.log("onChange")}
           lazyRadius= {0}
           brushRadius= {7}
           //hideGrid={"false"}
         />
-        <button class="btn btn-primary" onClick={() => {
-              this.saveableCanvas.clear();
-            }}>Clear</button>
-        <button class="btn btn-success" onClick={() => {
-              this.saveableCanvas.undo();
-            }}>Undo</button>
+       
         </div>
         </div>
         </div>
