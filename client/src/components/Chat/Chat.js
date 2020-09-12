@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react'
 import io from 'socket.io-client'
 import TextField from '@material-ui/core/TextField'
 import Draw from '../Draw/Draw';
+import InfoBar from '../InfoBar/infoBar';
 import './Chat.css';
 
 const socket = io.connect('http://localhost:3001')
@@ -31,7 +32,9 @@ function Chat() {
     return chat.map(({ name, message }, index) => (
       <div key={index}>
         <h3>
+        
           {name}: <span>{message}</span>
+          
         </h3>
       </div>
     ))
@@ -44,7 +47,7 @@ function Chat() {
       </div>
       <div className="column" id="chatWindow">
         <form onSubmit={onMessageSubmit}>
-          <h1 id="chatHeader">Artsy Chat</h1>
+          <InfoBar/>
           <hr></hr>
           <div className="name-field" id="nameField">
             <TextField
@@ -69,7 +72,7 @@ function Chat() {
         <h1 id="chatHeader">Chat Log</h1>
         <div className="render-chat" id="chatLog">
           <div id="chatBody">
-          {renderChat()}
+            {renderChat()}
           </div>
         </div>
       </div>
