@@ -2,6 +2,7 @@ import React, { Component } from "react";
 import "./Draw.css";
 import CanvasDraw from "react-canvas-draw";
 import { BlockPicker } from 'react-color';
+import Word from '../RandomWord/randomWord';
 
 
 export default class Draw extends Component {
@@ -18,7 +19,7 @@ export default class Draw extends Component {
     return (
       <div className="dashboard">
           <div className="header">
-        <h1>You Get To Draw: _________________</h1>
+        <h1>You Get To Draw: <Word/></h1>
         <h5>Score: ____</h5>
       </div>
       <br></br>
