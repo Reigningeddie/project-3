@@ -42,32 +42,35 @@ function Chat() {
       <div className="column">
         <Draw />
       </div>
-      <div className="column">
+      <div className="column" id="chatWindow">
         <form onSubmit={onMessageSubmit}>
-          <h1>Messenger</h1>
-          <div className="name-field">
+          <h1 id="chatHeader">Artsy Chat</h1>
+          <hr></hr>
+          <div className="name-field" id="nameField">
             <TextField
               name="name"
               onChange={e => onTextChange(e)}
               value={state.name}
-              label="Name"
+              label="Your Name"
             />
           </div>
-          <div>
+          <div id="messageField">
             <TextField
               name="message"
               onChange={e => onTextChange(e)}
               value={state.message}
               id="outlined-multiline-static"
               variant="outlined"
-              label="Message"
+              label="Your Message"
             />
           </div>
-          <button>Send Message</button>
+          <button id="chatButton">Send Message</button>
         </form>
-        <div className="render-chat">
-          <h1>Chat Log</h1>
+        <h1 id="chatHeader">Chat Log</h1>
+        <div className="render-chat" id="chatLog">
+          <div id="chatBody">
           {renderChat()}
+          </div>
         </div>
       </div>
     </div>
