@@ -14,6 +14,7 @@ function Chat() {
     socket.on('message', ({ name, message }) => {
       setChat([...chat, { name, message }])
     })
+    socket.emit()
   })
 
   const onTextChange = e => {

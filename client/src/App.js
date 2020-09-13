@@ -13,7 +13,11 @@ import Draw from "./components/Draw";
 import Chat from './components/Chat/Chat';
 import Join from './components/Join/Join';
 
+
+
 function App() {
+
+  
   return (
     <AuthProvider>
       <Router>
