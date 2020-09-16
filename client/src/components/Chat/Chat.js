@@ -1,34 +1,23 @@
-import React, { useState, useEffect } from 'react'
-import io from 'socket.io-client'
+import React from 'react'
 import TextField from '@material-ui/core/TextField'
 import Draw from '../Draw/Draw';
 import './Chat.css';
 
-const socket = io.connect('http://localhost:3001')
 
-function Chat() {
-  const [state, setStaet] = useState({ message: '', name: '' })
-  const [chat, setChat] = useState([])
+function Chat(props) {
 
-  useEffect(() => {
-    socket.on('message', ({ name, message }) => {
-      setChat([...chat, { name, message }])
-    })
-  })
+  console.log("props: ", props);
+  //console.log("location: ", location);
+
 
   const onTextChange = e => {
-    setStaet({ ...state, [e.target.name]: e.target.value })
+    props.changeState({ ...props.stateValue, [e.target.name]: e.target.value })
   }
 
-  const onMessageSubmit = e => {
-    e.preventDefault()
-    const { name, message } = state
-    socket.emit('message', { name, message })
-    setStaet({ message: '', name })
-  }
+
 
   const renderChat = () => {
-    return chat.map(({ name, message }, index) => (
+    return props.chatValue.map(({ name, message }, index) => (
       <div key={index}>
         <p>
           {name}: <span>{message}</span>
@@ -51,12 +40,12 @@ function Chat() {
           {renderChat()}
           </div>
         </div>
-        <form onSubmit={onMessageSubmit} id="chatForm">
+        <form onSubmit={props.sendMessage} id="chatForm">
           <div className="name-field" id="nameField">
             <TextField
               name="name"
               onChange={e => onTextChange(e)}
-              value={state.name}
+              value={props.stateValue.name}
               id="outlined-multiline-static"
               variant="outlined"
               label="Your Name*"
@@ -66,7 +55,7 @@ function Chat() {
             <TextField
               name="message"
               onChange={e => onTextChange(e)}
-              value={state.message}
+              value={props.stateValue.message}
               id="outlined-multiline-static"
               variant="outlined"
               label="Your Message*"
