@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import "./Draw.css";
-import Canvas from "../Canvas";
+import Canvas from "react-canvas-draw";
 import { BlockPicker } from 'react-color';
 import Word from '../RandomWord/randomWord';
 
