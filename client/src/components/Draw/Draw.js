@@ -42,10 +42,10 @@ export default class Draw extends Component {
           brushRadius= {7}
           //hideGrid={"false"}
         />
-        <button class="btn btn-primary" onClick={() => {
+        <button className="btn btn-primary" onClick={() => {
               this.saveableCanvas.clear();
             }}>Clear</button>
-        <button class="btn btn-success" onClick={() => {
+        <button className="btn btn-success" onClick={() => {
               this.saveableCanvas.undo();
             }}>Undo</button>
         </div>
