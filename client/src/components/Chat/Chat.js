@@ -19,9 +19,9 @@ function Chat(props) {
   const renderChat = () => {
     return props.chatValue.map(({ name, message }, index) => (
       <div key={index}>
-        <h3>
+        <p>
           {name}: <span>{message}</span>
-        </h3>
+        </p>
       </div>
     ))
   }
@@ -32,15 +32,23 @@ function Chat(props) {
         <Draw />
       </div>
       <div className="column" id="chatWindow">
-        <form onSubmit={props.sendMessage}>
-          <h1 id="chatHeader">Artsy Chat</h1>
-          <hr></hr>
+      <h1 id="chatHeader">Chat</h1>
+      <hr></hr>
+      <h1 id="logHeader">Chat Log</h1>
+        <div className="render-chat" id="chatLog">
+          <div id="chatBody">
+          {renderChat()}
+          </div>
+        </div>
+        <form onSubmit={props.sendMessage} id="chatForm">
           <div className="name-field" id="nameField">
             <TextField
               name="name"
               onChange={e => onTextChange(e)}
               value={props.stateValue.name}
-              label="Your Name"
+              id="outlined-multiline-static"
+              variant="outlined"
+              label="Your Name*"
             />
           </div>
           <div id="messageField">
@@ -50,17 +58,11 @@ function Chat(props) {
               value={props.stateValue.message}
               id="outlined-multiline-static"
               variant="outlined"
-              label="Your Message"
+              label="Your Message*"
             />
           </div>
           <button id="chatButton">Send Message</button>
         </form>
-        <h1 id="chatHeader">Chat Log</h1>
-        <div className="render-chat" id="chatLog">
-          <div id="chatBody">
-          {renderChat()}
-          </div>
-        </div>
       </div>
     </div>
   )

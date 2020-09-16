@@ -48,10 +48,10 @@ export default class Draw extends Component {
               lazyRadius={0}
               brushRadius={7}
             />
-            <button class="btn btn-primary" onClick={() => {
+            <button className="btn btn-primary" onClick={() => {
               this.saveableCanvas.clear();
             }}>Clear</button>
-            <button class="btn btn-success" onClick={() => {
+            <button className="btn btn-success" onClick={() => {
               this.saveableCanvas.undo();
             }}>Undo</button>
           </div>
