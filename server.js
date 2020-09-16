@@ -16,11 +16,30 @@ const PORT = process.env.PORT || 3001;
 
 const router = express.Router();
 
+// array of all lines
+var line_history = [];
+
 io.on("connection", (socket) => {
-  console.log("WS connected");
+  // chat -component
   socket.on("message", ({ name, message }) => {
     io.emit("message", { name, message });
   });
+  // Draw -component
+    // send draw history to new client
+  for (var i in line_history) {
+    socket.emit("draw_line", { line: line_history[i] } );
+  }
+    // add handler for message type "draw_line"
+  socket.on("draw_line", function (data) {
+      // add recieved line to history
+      line_history.push(data.line);
+      // send line to all clients
+      io.emit("draw_line", { line: data.line });
+  })
+  // disconnect
+  socket.on("disconnect", () => {
+    console.log("user logged off");
+  })
 });
 
 // log all requests to the console in development
