@@ -70,14 +70,6 @@ function App({ location }) {
     socket.on('message', ({ name, message }) => {
       setChat([...chat, { name, message }])
     })
-    socket.on('draw_line', function (data) {
-      var line = data.line;
-      context.beginPath();
-      context.lineWidth = 2;
-      context.moveTo(line[0].x * width, line[0].y * height);
-      context.lineTo(line[1].x * width, line[1].y * height);
-      context.stroke();
-   });
   });
   
   return (
@@ -95,6 +87,9 @@ function App({ location }) {
             <Route exact path="/signup">
               <Signup />
             </Route>
+            <ProtectedRoute exact path="/join" component={Join}>
+              <Join />
+            </ProtectedRoute>
             <ProtectedRoute exact path="/profile">
               <Profile />
             </ProtectedRoute>
@@ -121,7 +116,6 @@ function App({ location }) {
                 sendMessage={onMessageSubmit}
               />
             </Route>
-            <Route path = "/join" component={Join}/>
           </Switch>
         </div>
       </Router>

@@ -11,6 +11,11 @@ function Navbar() {
 
   if (isLoggedIn) {
     links.push(
+      <NavLink key="join" className="nav-item" to="/join">
+      Join
+    </NavLink>
+    );
+    links.push(
       <NavLink key="profile" className="nav-item" to="/profile">
         Profile
       </NavLink>
