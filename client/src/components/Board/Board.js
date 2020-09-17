@@ -45,7 +45,7 @@ const Board = () => {
       context.moveTo(x0, y0);
       context.lineTo(x1, y1);
       context.strokeStyle = color;
-      context.lineWidth = 2;
+      context.lineWidth = 5;
       context.stroke();
       context.closePath();
 
@@ -139,14 +139,20 @@ const Board = () => {
           <h1>You Get To Draw: <Word /></h1>
           <h5>Score: ____</h5>
         </div>
+        <br></br>
       <canvas ref={canvasRef} className="whiteboard" />
 
       <div ref={colorsRef} className="colors">
-        <div className="color black" />
         <div className="color red" />
+        <div className="color orange" />
+        <div className="color yellow" />
+
         <div className="color green" />
         <div className="color blue" />
-        <div className="color yellow" />
+        <div className="color purple" />
+
+        <div className="color pink" />
+        <div className="color black" />
         <div className="color brown" />
       </div>
     </div>

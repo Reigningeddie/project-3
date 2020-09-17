@@ -13,18 +13,23 @@
   }
   
   .colors {
-    position: fixed;
+  position: fixed;
   }
   
   .color {
     display: inline-block;
-    height: 48px;
-    width: 48px;
+    height: 24px;
+    width: 24px;
+    border-radius: 25px;
+    margin: 3px;
   }
   
   .color.black { background-color: black; }
-  .color.red { background-color: red; }
-  .color.green { background-color: green; }
-  .color.blue { background-color: blue; }
+  .color.red { background-color: #F5260A; }
+  .color.green { background-color: #2CBC07; }
+  .color.blue { background-color: #0A74F5; }
   .color.yellow { background-color: yellow; }
-  .color.brown { background-color: brown; }
+  .color.orange { background-color: #F78E06; }
+  .color.purple { background-color: #B60BCB; }
+  .color.pink { background-color: #F345B7; }
+  .color.brown { background-color: #682603; }
