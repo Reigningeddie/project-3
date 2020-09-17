@@ -1,45 +1,53 @@
+require("dotenv").config();
 const express = require("express");
-const socketio = require("socket.io");
-const http = require("http");
-
-const { addUser, removeUser, getUser, getUsersInRoom } = require("./users");
-
-const PORT = process.env.PORT || 3000;
-
-const router = require("./router");
-
 const app = express();
+const path = require("path");
+const morgan = require("morgan");
+const initDb = require("./config/initDb");
+const authRouter = require("./routes/auth");
+const usersRouter = require("./routes/users");
+const errorMiddleware = require("./routes/errorMiddleware");
+const sRouter = require("./routes/sockets");
+const http = require("http");
 const server = http.createServer(app);
-const io = socketio(server);
+const io = require("socket.io")(server);
+
+const PORT = process.env.PORT || 3001;
+
+const router = express.Router();
 
 io.on("connection", (socket) => {
-  socket.on("join", ({ name, room }, callback) => {
-    const { error, user } = addUser({ id: socket, id, name, room });
-
-    if (error) return callback(error);
-
-        socket.emit('message', { user: 'admin', text: `${user.name}, weclome to ${user.room}`});
-        socket.broadcast.to(user.room).emit('message', { user: 'admin', text: `${user.name}, has joined!`});
-
-        socket.join(user.room);
-
-        callback();
-    });
-
-    socket.on('sendMessage', (message, callback) => {
-        const user = getUser(socket.id);
-
-        io.to(user.room).emit('message', {user: user.name, text: message});
-
-        callback();
-
-    });
-
-    socket.on('disconnect', () => {
-        console.log('user has disconnected');
-    })
+  // chat -component
+  socket.on("message", ({ name, message }) => {
+    io.emit("message", { name, message });
+  });
+  // Draw -component
+  socket.on('drawing', (data) => socket.broadcast.emit('drawing', data));
 });
 
-app.use(router);
+// log all requests to the console in development
+if (process.env.NODE_ENV !== "production") {
+  app.use(morgan("dev"));
+}
 
-server.listen(PORT, () => console.log(`Server has started on port ${PORT}`));
+// Setting up express to use json and set it to req.body
+app.use(express.json());
+app.use(express.urlencoded({ extended: true }));
+
+initDb();
+
+// Serve up static assets in production (usually on heroku)
+if (process.env.NODE_ENV === "production") {
+  app.use(express.static("client/build"));
+}
+
+app.use(authRouter, usersRouter, router, sRouter, errorMiddleware);
+
+// Send all other requests to react app
+app.get("*", (req, res) => {
+  res.sendFile(path.join(__dirname, "./client/build/index.html"));
+});
+
+server.listen(PORT, () => {
+  console.log(`🌎 ==> Server now on port ${PORT}!`);
+});
