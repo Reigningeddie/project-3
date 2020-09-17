@@ -8,6 +8,7 @@ function Home() {
   const { user, logout } = useAuth();
   const history = useHistory();
 
+  const goToJoinGame = () => history.push("/join");
   const goToEditProfile = () => history.push("/profile");
 
   return (
@@ -21,6 +22,7 @@ function Home() {
         <button style={{ marginLeft: "1em" }} onClick={() => logout()}>
           Logout
         </button>
+        <button style={{ marginLeft: "1em"}} onClick={goToJoinGame}>Join a Game</button>
       </p>
     </div>
   );
