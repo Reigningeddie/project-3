@@ -1,88 +1,62 @@
-# Create React Express App
+# Artsy
+![Screenshot](./client/src/icons/Artsy.png)
 
-## About This Boilerplate
+## Description
 
-This setup allows for a Node/Express/React/JWT app which can be easily deployed to Heroku.
+Artsy is a real time miltiplayer drawing game. One person draws a word given to them and the other plays have to guess what is being drawn.
 
-The front-end React app will auto-reload as it's updated via webpack dev server, and the backend Express app will auto-reload independently with nodemon.
+## How to play:
+    1. Log in or create an account with a username
+    2. Click Join a game from the Home page
+    3. Enter a Room and Name to join a game
+    4. Once joined there will be a random word seen on the screen for someone to draw and the others have to guess.
 
-An article on how the server is setup with JWT can be found [here](https://hptechblogs.com/using-json-web-token-for-authentication/). This has been modified to use a mongo database instead of hardcoded array of users.
+## Future Updates
+    1.The first person to join a room will be set to the host and get a random word to draw. Currently everyone who joins will be able to see a random word and draw on the page.
+    2.The person to correct the right word will gain points and be set to the drawer for the next round.
+    3. Points will be awarded to the person who guesses the correct drawing.
+    4. Leader Board on past wins/score
+    5. Add a timer for the drawer
+## Technology Used
+ - React
+ - Canvas
+ - Socket.io
+ - Node.js
 
-The front end has been setup to use JWT as a way of authenticating users and routes. To understand it's structure better please refer to the following article [here](https://hptechblogs.com/using-json-web-token-react/)
+## Credits 
+  - Marissa Adams (@mrenadams)
+  - Joseph Magdaleno (@josephmagdaleno)
+  - Eddie Aguilar (@Reigningeddie)
 
-Please feel free to modify this code in anyway you see fit for your project. It is a boilerplate setup that tries to make sure you can get something up and running without having to worry about setting up user authentication from scratch.
-I highly suggest you read the articles before jumping in so you can have an better understanding of how everything works in the code.
+## Table of Contents 
 
-Server-side article and using JWT: https://hptechblogs.com/using-json-web-token-for-authentication/
+* [Installation](#installation)
 
-Front End article on using the JWT on a react application: https://hptechblogs.com/using-json-web-token-react/
+* [Usage](#usage)
 
-## Starting the app locally
+* [License](#license)
 
-Add a .env at the top level of this project.
+* [Contributing](#contributing)
 
-Then inside of the .env add a SERVER_SECRET set to any value you'd like
+* [Tests](#tests)
 
-```
-SERVER_SECRET = 123456
-```
+* [Questions](#questions)
 
-First off make sure you have a local version of MongoDB running on your machine. This project will make a local database for you called `appDB`.
+## Installation
 
-```
-mongod
-```
-
-Start by installing front and backend dependencies. While in the root directory, run the following command:
-
-```
-npm install
-```
-
-After all installations complete, run the following command in your terminal:
-
-```
-npm start
-```
-
-That's it, your app should be running on <http://localhost:3000>. The Express server should intercept any AJAX requests from the client.
-
-## Deployment (Heroku)
-
-### Create a Git Repo
-
-Once you're ready to deploy, start by making sure your project is a git repository. If so, proceed to the next section, otherwise run the following commands in your terminal:
+To install necessary dependencies, run the following command:
 
 ```
-git init
-git add .
-git commit -m "Initial commit"
+npm i
+```
+## Tests
+
+To run tests, run the following command:
+
+```
+npm test
 ```
 
-### Deploying
+## Questions
 
-1. Go onto your heroku account and link your repository through the UI
-2. Go to resources and find mLab as a Add-on
-3. Provision a Mongo Database
-4. Go back and click "Deploy"
-
-## Tests/Linting
-
-Run `npm run lint` from the project root to run eslint checks on the backend
-and front end code. Run `npm run lint` from the `client` directory to lint the
-client only.
-
-The root and client have convenience scripts define to easily apply auto-fixes
-with eslint. Run `npm run lint:fix` from the root and `client` to apply fixes
-for the entire project or client only respectively.
-
-## Travis CI
-
-A basic configuration for Travis CI is included. Configure the GitHub repo to
-run checks before merging to enforce linting checks and tests.
-
-**IMPORTANT!** Add the mongodb service to `.travis.yml` if tests using MongoDB
-are included in the project. Likewise, if another database is used to replace
-MongoDB, then `.travis.yml` will need to be updated accordingly. Please refer
-to the [Travis CI Documentation](https://docs.travis-ci.com/) for more
-information.
+If you have any questions about the repo, open an issue or contact [Reigningeddie, mrenadams, josephmagdaleno](undefined) directly at .
