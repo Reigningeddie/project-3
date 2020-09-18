@@ -57,8 +57,12 @@ function App({ location }) {
   }
 
   let socket;
-  const ENDPOINT = process.env.PORT || 'localhost:3001'
 
+  let ENDPOINT = "localhost:3001"
+  if (process.env.NODE_ENV === "production") {
+    ENDPOINT = 'https://artsy-pictionary.herokuapp.com/'
+    var PORT = process.env.PORT;
+  } 
 
   useEffect(() => {
 
