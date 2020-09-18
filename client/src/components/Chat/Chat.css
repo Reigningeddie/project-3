@@ -1,3 +1,7 @@
+* {
+  z-index: 1;
+}
+
 .column{
   /*width: 400px;
   height: 730px;*/
