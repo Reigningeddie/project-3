@@ -57,7 +57,7 @@ function App({ location }) {
   }
 
   let socket;
-  const ENDPOINT = 'localhost:3001'
+  const ENDPOINT = process.env.PORT || 'localhost:3001'
 
 
   useEffect(() => {
