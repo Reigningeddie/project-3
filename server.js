@@ -19,7 +19,7 @@ const router = express.Router();
 io.on("connection", (socket) => {
   // chat -component
   socket.on("message", ({ name, message }) => {
-    io.emit("message", { name, message });
+    socket.broadcast.emit("message", { name, message });
   });
   // Draw -component
   socket.on('drawing', (data) => socket.broadcast.emit('drawing', data));
